@@ -1,0 +1,23 @@
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="grad128" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+        </linearGradient>
+        <filter id="shadow">
+            <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(0,0,0,0.2)"/>
+        </filter>
+    </defs>
+    <rect width="128" height="128" rx="20" fill="url(#grad128)" filter="url(#shadow)"/>
+    <rect x="20" y="25" width="75" height="6" rx="3" fill="white" opacity="0.9"/>
+    <rect x="20" y="40" width="55" height="6" rx="3" fill="white" opacity="0.8"/>
+    <rect x="20" y="55" width="65" height="6" rx="3" fill="white" opacity="0.8"/>
+    <rect x="20" y="70" width="48" height="6" rx="3" fill="white" opacity="0.6"/>
+    <rect x="20" y="85" width="58" height="6" rx="3" fill="white" opacity="0.6"/>
+    
+    <circle cx="96" cy="88" r="16" fill="#4CAF50" filter="url(#shadow)"/>
+    <path d="M88 88 L94 94 L104 78" stroke="white" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <path d="M102 32 L98 42 L105 42 L101 52" stroke="#FFD700" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <path d="M112 45 L109 52 L114 52 L111 58" stroke="#FFD700" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+</svg>
