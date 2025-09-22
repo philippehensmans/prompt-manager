@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestionnaire de Prompts</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📝 Mes Prompts</h1>
+            <div class="header-actions">
+                <button id="add-prompt-btn" class="btn-primary">+ Nouveau</button>
+                <button id="export-btn" class="btn-secondary">Export</button>
+                <button id="sync-status-btn" class="btn-secondary" title="Statut de synchronisation">🔄</button>
+            </div>
+        </header>
+
+        <div id="sync-info" class="sync-info hidden">
+            <div class="sync-details">
+                <div class="sync-stat">
+                    <span class="sync-label">Favoris synchronisés:</span>
+                    <span id="sync-count">0</span>
+                </div>
+                <div class="sync-stat">
+                    <span class="sync-label">Espace utilisé:</span>
+                    <span id="sync-usage">0%</span>
+                </div>
+                <div class="sync-tip">
+                    💡 Astuce: Marquez vos prompts favoris avec ⭐ pour les synchroniser sur tous vos appareils !<br>
+                    <small>⚠️ <strong>Sync désactivée ?</strong> 
+                    <a href="chrome://settings/syncSetup" target="_blank" style="color: #2196F3;">Activez la synchronisation Chrome</a> 
+                    et connectez-vous à votre compte Google.</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="search-section">
+            <input type="text" id="search-input" placeholder="🔍 Rechercher un prompt...">
+            <div class="filter-row">
+                <select id="category-filter">
+                    <option value="">Toutes catégories</option>
+                    <option value="communication">Communication</option>
+                    <option value="gestion-projet">Gestion de projet</option>
+                    <option value="blogging">Blogging</option>
+                    <option value="fundraising">Fundraising</option>
+                    <option value="reporting">Reporting</option>
+                    <option value="strategie">Stratégie</option>
+                    <option value="formation">Formation</option>
+                    <option value="autre">Autre</option>
+                </select>
+                <select id="favorite-filter">
+                    <option value="">Tous les prompts</option>
+                    <option value="favorites">⭐ Favoris seulement</option>
+                    <option value="non-favorites">Prompts normaux</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="prompts-container">
+            <!-- Les prompts seront affichés ici -->
+        </div>
+
+        <!-- Modal pour ajouter/éditer un prompt -->
+        <div id="prompt-modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="modal-title">Nouveau Prompt</h2>
+                    <span class="close">&times;</span>
+                </div>
+                <form id="prompt-form">
+                    <div class="form-group">
+                        <label for="prompt-name">Nom du prompt :</label>
+                        <input type="text" id="prompt-name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="prompt-category">Catégorie :</label>
+                        <select id="prompt-category" required>
+                            <option value="">Choisir une catégorie</option>
+                            <option value="communication">Communication</option>
+                            <option value="gestion-projet">Gestion de projet</option>
+                            <option value="blogging">Blogging</option>
+                            <option value="fundraising">Fundraising</option>
+                            <option value="reporting">Reporting</option>
+                            <option value="strategie">Stratégie</option>
+                            <option value="formation">Formation</option>
+                            <option value="autre">Autre</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="prompt-text">Contenu du prompt :</label>
+                        <textarea id="prompt-text" rows="6" required placeholder="Écrivez votre prompt ici..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="prompt-tags">Tags (séparés par des virgules) :</label>
+                        <input type="text" id="prompt-tags" placeholder="ONG, rapport, annuel, impact">
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">Sauvegarder</button>
+                        <button type="button" id="cancel-btn" class="btn-secondary">Annuler</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Import modal -->
+        <div id="import-modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Importer des prompts</h2>
+                    <span class="close">&times;</span>
+                </div>
+                <div class="form-group">
+                    <label for="import-file">Fichier JSON :</label>
+                    <input type="file" id="import-file" accept=".json">
+                </div>
+                <div class="form-actions">
+                    <button id="import-confirm-btn" class="btn-primary">Importer</button>
+                    <button id="import-cancel-btn" class="btn-secondary">Annuler</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
